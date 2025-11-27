@@ -53,7 +53,7 @@ export const transformToComponentProps = (props:ComponentProps) => {
     return mapValues(props, (item)=>{
         if(!isNil(item)){
             return {
-                type: item?.constructor,
+                type: item.constructor,
                 default: item
             }
         } else{
