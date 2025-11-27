@@ -1,6 +1,11 @@
 <template>
 <div class="editor">
-    <div class="componentList"></div>
+    <div class="adds">
+        <template v-for="item in componentAdds">
+            <div>{{item}}</div>
+        </template>
+    </div>
+    
     <div class="contentCanvas">
         <TransitionGroup name="fade">
             <template v-for="(item, index) in componentPropsMap.values()" :key="item">
@@ -8,7 +13,12 @@
             </template>
         </TransitionGroup>
     </div>
-    <div class="configBoard"></div>
+    
+    <div class="configs">
+        <template v-for="item in componentConfigs">
+            <div>{{item}}</div>
+        </template>
+    </div>
 </div>
 </template>
 
@@ -17,7 +27,8 @@ import { KeepAlive, type Reactive } from 'vue';
 import { type ComponentProps, UPDATE_COMPONENT_ENUM } from "@/types/index.ts"
 
 
-const numList: Reactive<string[]> = reactive([]);
+const componentAdds:Reactive<string[]> = reactive([]);
+const componentConfigs:Reactive<ComponentProps[]> = reactive([]);
 
 function update(targetId:string, updateType: UPDATE_COMPONENT_ENUM, params?: ComponentProps): void {
 
@@ -31,8 +42,13 @@ function update(targetId:string, updateType: UPDATE_COMPONENT_ENUM, params?: Com
     justify-content: space-between;
     align-items: center;
 
-    >.componentList{
+    >*{
+        background-color: white;
+    }
+    
+    >.adds{
         display: grid;
+        border-radius: 1rem;
     }
 
     >.contentCanvas{
@@ -54,8 +70,9 @@ function update(targetId:string, updateType: UPDATE_COMPONENT_ENUM, params?: Com
         }
     }
 
-    >.configBoard{
+    >.configs{
         display:flex;
+        border-radius: 1rem;
         flex-direction: column;
     }
 }
