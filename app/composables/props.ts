@@ -1,7 +1,8 @@
 import { type Reactive } from 'vue';
-import { mapValues, isNil } from "lodash-es"
-import type { ComponentProps } from "@/types/index.ts"
+import { mapValues, isNil } from "lodash-es";
+import type { ComponentProps } from "@/types/index.ts";
 
+// 通用props
 export const commonDefaultProps:ComponentProps = {
     // size
    height: 'auto',
@@ -10,12 +11,14 @@ export const commonDefaultProps:ComponentProps = {
    maxWidth: 'auto',
    minHeight: 'auto',
    minWidth: 'auto',
+    
    // position
    position: 'static',
    top: '0px',
    right: '0px',
    bottom: '0px',
    left: '0px',
+    
    // border
    border: '0',
    borderRadius: '0',
@@ -25,11 +28,14 @@ export const commonDefaultProps:ComponentProps = {
    borderLeft: 'initial',
    borderColor: 'initial',
    borderWidth: 'initial',
+    
    // shadow and opacity
    boxShadow: 'initial',
    opacity: 'initial',
+    
    // geometric
    backgroundColor: 'initial',
+    overflow: 'visible',
 }
 
 // 将默认值props 转换成组件的 props
@@ -61,7 +67,7 @@ export const transformToComponentProps = (props:ComponentProps) => {
                 default: item
             }
         } else{
-            return null
+            return null;
         }
     })
 }
