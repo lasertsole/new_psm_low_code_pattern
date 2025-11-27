@@ -1,7 +1,7 @@
 <template>
 <div class="editor">
     <div class="adds">
-        <template v-for="item in componentAdds">
+        <template v-for="item in components">
             <div>{{item}}</div>
         </template>
     </div>
@@ -9,14 +9,14 @@
     <div class="contentCanvas">
         <TransitionGroup name="fade">
             <template v-for="(item, index) in componentPropsMap.values()" :key="item">
-              <component @update="update"></component>
+              <component v-bind="transformToComponentProps(item)"></component>
             </template>
         </TransitionGroup>
     </div>
     
     <div class="configs">
-        <template v-for="item in componentConfigs">
-            <div>{{item}}</div>
+        <template v-for="(item, index) in componentPropsMap.values()" :key="item">
+            <component  @update="update">{{item}}</component>
         </template>
     </div>
 </div>
@@ -25,10 +25,6 @@
 <script lang="ts" setup>
 import { KeepAlive, type Reactive } from 'vue';
 import { type ComponentProps, UPDATE_COMPONENT_ENUM } from "@/types/index.ts"
-
-
-const componentAdds:Reactive<string[]> = reactive([]);
-const componentConfigs:Reactive<ComponentProps[]> = reactive([]);
 
 function update(targetId:string, updateType: UPDATE_COMPONENT_ENUM, params?: ComponentProps): void {
 
