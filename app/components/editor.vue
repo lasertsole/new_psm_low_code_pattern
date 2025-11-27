@@ -3,7 +3,7 @@
     <div class="componentList"></div>
     <div class="contentCanvas">
         <TransitionGroup name="fade">
-            <template v-for="(item, index) in componentPropsList" :key="item">
+            <template v-for="(item, index) in componentPropsMap.values()" :key="item">
               <component @update="update"></component>
             </template>
         </TransitionGroup>
