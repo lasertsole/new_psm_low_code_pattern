@@ -1,0 +1,21 @@
+<template>
+<div class="Text" @click="clickCB">
+</div>
+</template>
+
+<script lang="ts" setup>
+import { UPDATE_COMPONENT_ENUM } from "@/types/index.ts";
+const props = defaultProps(transformToComponentProps(textDefaultProps));
+const emits = defineEmits<{
+  (e: 'update'): void;
+}>();
+
+function clickCB():void{
+}
+</script>
+
+<style lang="scss" scoped>
+.Text{
+
+}
+</style>
