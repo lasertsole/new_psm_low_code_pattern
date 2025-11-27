@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div id="root">
     <NuxtLayout>
       <NuxtPage keepalive />
     </NuxtLayout>
@@ -7,7 +7,7 @@
 </template>
 
 <style lang="scss" scoped>
-.app {
+#root {
   @include fullViewWindow;
 
   .page-enter-active,
