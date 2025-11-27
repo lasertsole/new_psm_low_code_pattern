@@ -30,6 +30,7 @@ import { type ComponentProps, UPDATE_COMPONENT_ENUM } from "@/types"
 function update(targetId: string, updateType: UPDATE_COMPONENT_ENUM, params?: ComponentProps): void {
 
 }
+
 </script>
 
 <style lang="scss" scoped>

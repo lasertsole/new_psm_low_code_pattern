@@ -1,5 +1,5 @@
-//compatibilityDate: '2025-11-27'
 export default defineNuxtConfig({
+  compatibilityDate: '2025-11-27',
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
