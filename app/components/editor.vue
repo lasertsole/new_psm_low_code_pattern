@@ -15,9 +15,11 @@
     </div>
     
     <div class="configs">
-        <template v-for="(item, index) in componentPropsMap.values()" :key="item">
-            <component  @update="update">{{item}}</component>
-        </template>
+        <TransitionGroup name="fade">
+            <template v-for="(item, index) in componentPropsMap.values()" :key="item">
+                <component  @update="update">{{item}}</component>
+            </template>
+        </TransitionGroup>
     </div>
 </div>
 </template>
