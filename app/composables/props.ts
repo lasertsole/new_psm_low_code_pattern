@@ -2,8 +2,10 @@ import { type Reactive } from 'vue';
 import { mapValues, isNil } from "lodash-es";
 import type { ComponentProps, Component } from "@/types/index.ts";
 
-// 通用props
-export const commonDefaultProps:ComponentProps = {
+//属性由两部分组成 样式属性 和 其他属性
+
+// 通用样式props
+export const commonStyleProps:ComponentProps = {
     // size
    height: 'auto',
    width: 'auto',
@@ -38,11 +40,10 @@ export const commonDefaultProps:ComponentProps = {
     overflow: 'visible',
 }
 
-// 将默认值props 转换成组件的 props
-export const textDefaultProps:ComponentProps = {
-    ...commonDefaultProps,
+// 文本组件 的 样式props
+export const textStyleProps:ComponentProps = {
+    ...commonStyleProps,
     // text
-    text: '',
     textAlign: 'left',
     color: '#000',
     textDecoration: 'none',
@@ -53,6 +54,12 @@ export const textDefaultProps:ComponentProps = {
     letterSpacing: 'initial',
     textIndent: 'initial',
     textOverflow: 'initial',
+}
+
+// 文本组件 的 非样式属性
+export const textNoStyleProps:ComponentProps = {
+    // text
+    text: '正文内容',
 }
 
 // 组件响应式数组,key为id，值为当前画布上的组件属性 map

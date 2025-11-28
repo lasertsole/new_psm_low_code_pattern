@@ -6,7 +6,21 @@
 
 <script lang="ts" setup>
 import { UPDATE_COMPONENT_ENUM } from "@/types";
-const props = defineProps(transformToComponentProps(textDefaultProps));
+
+/****以下是获取默认属性****/
+const defaultProps: {
+  readonly [key: string]: any;
+} = transformToComponentProps({ ...textStyleProps, ...textNoStyleProps });
+
+const props = defineProps({
+  tag: {
+    type: String,
+    default: 'div'
+  },
+  ...defaultProps
+});
+/****以上是获取默认属性****/
+
 const emits = defineEmits<{
   (e: 'update'): void;
 }>();
