@@ -17,7 +17,7 @@
         <div class="configs">
             <TransitionGroup name="fade">
                 <template v-for="(item, index) in idToCurComponentPropsMap.values()" :key="item">
-                    <!-- <component @update="update">{{ item }}</component> -->
+                    <component @update="update">{{ item }}</component>
                 </template>
             </TransitionGroup>
         </div>

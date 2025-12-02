@@ -1,6 +1,6 @@
 <template>
   <select class="fontSelect">
-    <option v-for="fontFamily in fontFamilyList" :key="fontFamily" :style="`font-family: ${fontFamily};`">
+    <option v-for="fontFamily in fontFamilyList" :key="fontFamily" :style="`font-family: ${fontFamily}`">
       {{ fontFamily }}
     </option>
   </select>

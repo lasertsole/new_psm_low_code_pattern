@@ -1,6 +1,7 @@
-import { type Reactive } from 'vue';
+import { type Reactive, type AsyncComponentLoader } from 'vue';
 import { mapValues, isNil } from "lodash-es";
 import type { ComponentProps, Component } from "@/types/index.ts";
+import { v4 as uuidv4 } from 'uuid';
 
 //属性由两部分组成 样式属性 和 其他属性
 
@@ -58,7 +59,6 @@ export const textStyleProps:ComponentProps = {
 
 // 文本组件 的 非样式属性
 export const textNoStyleProps:ComponentProps = {
-    // text
     text: '正文内容',
 }
 
@@ -67,6 +67,11 @@ export const idToCurComponentPropsMap: Reactive<Map<string, ComponentProps>> = r
 
 // 组件数组
 export const componentAdds: Reactive<Component[]> = reactive([]);
+const components = import.meta.glob('~/components/conf/**/*.vue');
+Object.entries(components).map(([path, component])=>{
+    console.warn(defineAsyncComponent(component as AsyncComponentLoader<any>));
+});
+
 
 // 将默认值props 转换成组件的 props
 export const transformToComponentProps = (props:ComponentProps): {
@@ -91,4 +96,8 @@ function convertCamelToKebab(camelCaseString:string):string {
   return camelCaseString.replace(/([A-Z])/g, (match, letter) => {
     return '-' + letter.toLowerCase();
   });
+}
+
+function addCurentComponent(component:Component):void{
+    const id:string = uuidv4();
 }
