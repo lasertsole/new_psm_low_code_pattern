@@ -33,4 +33,8 @@ export default defineNuxtConfig({
       apiBaseURL: "/api",
     },
   },
+
+  imports:{
+    dirs:['~/composables/**']
+  }
 })
